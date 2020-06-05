@@ -1,4 +1,10 @@
 # shopping_cart.py
+import datetime
+
+today = datetime.datetime.now()
+today = today.strftime("%Y-%m-%d %I:%M %p")
+# time = datetime.strptime("6:56", "%H:%M")
+# time = datetime.strftime("%I:%M" %p)
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -28,4 +34,44 @@ def to_usd(my_price):
 
 # TODO: write some Python code here to produce the desired output
 
-print(products)
+shopping_list = []
+
+while True:
+    try:
+        response = input("Please Enter Product ID: ")
+        if response == "Done":
+            break
+        else:
+            response = int(response)
+    except ValueError:
+        print("Invalid Product ID")
+    else:
+        if response <= 0 or response >= 21:
+            print("Invalid Product ID")
+        else:
+            shopping_list.append(response)
+
+print("---------------------------------")
+print("Best Foods Grocery")
+print("WWW.BEST-FOODS-GROCERY.COM")
+print("---------------------------------")
+print(f"CHECKOUT AT: {today}")
+print("---------------------------------")
+print("SELECTED PRODUCTS:")
+subtotal = 0
+
+for i in shopping_list:
+    for x in products:
+        if x["id"] == i:
+            print(f"... {x['name']} ({to_usd(x['price'])})")
+            subtotal += float(x["price"])
+
+print("---------------------------------")
+print(f"SUBTOTAL: {to_usd(subtotal)}")
+tax = to_usd(subtotal * 0.0875)
+total = to_usd(subtotal * 1.0875)
+print(f"TAX: {tax}")
+print(f"TOTAL: {total}")
+print("---------------------------------")
+print("THANKS, SEE YOU AGAIN SOON!")
+print("---------------------------------")
