@@ -127,3 +127,13 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+receipts/.gitignore
+
+# see: https://stackoverflow.com/a/5581995/670433
+
+# ignore all other files in this directory:
+*
+
+# except this ".gitignore" file:
+!.gitignore

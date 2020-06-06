@@ -36,6 +36,8 @@ def to_usd(my_price):
 
 shopping_list = []
 
+print("Enter Product IDs to populate at list of all of the customers shopping cart items.")
+print("Once completed, enter 'Done' to proceed.")
 while True:
     try:
         response = input("Please Enter Product ID: ")
